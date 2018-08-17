@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+  swagger_ui:
+    image: swaggerapi/swagger-ui
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./docker-run.sh:/usr/share/nginx/docker-run.sh
+      - .:/usr/share/nginx/html/api
+    environment:
+      SWAGGER_JSON: /usr/share/nginx/html/api/petstore.json
+    ports:
+      - 9000:8080
+    container_name: swagger_ui
+
